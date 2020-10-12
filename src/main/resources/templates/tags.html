@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +83,7 @@
                                         <div class="eleven wide column ">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
                                                     <div class="content"><a href="#" class="header">黎少康</a></div>
                                                 </div>
                                                 <div class="item">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="five wide column">
                                 <a href="#" target="_blank" >
-                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui rounded image imgStyle">
+                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui rounded image imgStyle">
 
                                 </a>
                             </div>
@@ -131,7 +131,7 @@
                                         <div class="eleven wide column ">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
                                                     <div class="content"><a href="#" class="header">黎少康</a></div>
                                                 </div>
                                                 <div class="item">
@@ -161,7 +161,7 @@
                             </div>
                             <div class="five wide column">
                                 <a href="#" target="_blank" >
-                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui rounded image imgStyle">
+                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui rounded image imgStyle">
 
                                 </a>
                             </div>
@@ -179,7 +179,7 @@
                                         <div class="eleven wide column ">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
                                                     <div class="content"><a href="#" class="header">黎少康</a></div>
                                                 </div>
                                                 <div class="item">
@@ -209,7 +209,7 @@
                             </div>
                             <div class="five wide column">
                                 <a href="#" target="_blank" >
-                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui rounded image imgStyle">
+                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui rounded image imgStyle">
 
                                 </a>
                             </div>
@@ -227,7 +227,7 @@
                                         <div class="eleven wide column ">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
                                                     <div class="content"><a href="#" class="header">黎少康</a></div>
                                                 </div>
                                                 <div class="item">
@@ -257,7 +257,7 @@
                             </div>
                             <div class="five wide column">
                                 <a href="#" target="_blank" >
-                                    <img src="../static/images/kakaxi.jpg" alt="" class="ui rounded image imgStyle">
+                                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui rounded image imgStyle">
 
                                 </a>
                             </div>
@@ -298,7 +298,7 @@
             <div class="three wide column ">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/images/weixin.jpg" class="ui rounded image " alt="" style="width:110px">
+                        <img th:src="@{/static/images/weixin.jpg}" class="ui rounded image " alt="" style="width:110px">
                     </div>
                 </div>
             </div>
@@ -339,7 +339,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" href="../static/css/me.css">
+<link rel="stylesheet" th:href="@{/static/css/me.css}">
 
 <script>
     $("#toggleClassButton").click(function(){
@@ -350,25 +350,6 @@
         on : 'click',
         position : 'bottom center'
     })
-
-
-
 </script>
-<style>
-    body{
-        background: none!important;
-
-    }
-</style>
 </body>
-
-<!--<script src="/static/js/jquery-3.0.0.min.js"></script>-->
-<!--<script>-->
-<!--    $(".menu .toggle").click(function(){-->
-<!--       $('.m-item').toggleClass('m-mobile-hide')-->
-<!--   })-->
-<!--</script>-->
-
-
-
 </html>

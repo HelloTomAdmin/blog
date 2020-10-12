@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>微博详情页</title>
 <!--    <link rel="stylesheet" href="./static/css/typo.css">-->
-<!--    <link rel="stylesheet" href="./static/css/animate.css">-->
-    <link rel="stylesheet" href="../static/lib/prism/prism.css">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
+    <!--    <link rel="stylesheet" href="./static/css/animate.css">-->
+    <link rel="stylesheet" th:href="@{/static/lib/prism/prism.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/tocbot/tocbot.css}">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item">
-                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
                     <div class="content"><a href="#" class="header">黎少康</a></div>
                 </div>
                 <div class="item">
@@ -56,7 +56,7 @@
         </div>
         <div class="ui attached segment">
 <!--            图片区域-->
-            <img src="../static/images/background1.jpg" alt="" class="rounded ui fluid image">
+            <img th:src="@{/static/images/background1.jpg}" alt="" class="rounded ui fluid image">
         </div>
         <div class="ui  attached segment">
 <!--            内容-->
@@ -90,11 +90,11 @@
             <div id="payQ" class="ui flowing popup transition hidden">
                 <div class="ui orange basic label">
                     <div class="ui image" style="font-size: inherit !important;">
-                        <img src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
+                        <img th:src="@{/static/images/weixin.jpg}" alt="" class="round ui bordered image" style="width :120px">
                         <div>支付宝</div>
                     </div>
                     <div class="ui image" style="font-size: inherit !important;">
-                        <img src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
+                        <img th:src="@{/static/images/weixin.jpg}" alt="" class="round ui bordered image" style="width :120px">
                         <div>微信</div>
                     </div>
 
@@ -116,7 +116,7 @@
                     </ui>
                 </div>
                 <div class="five wide column">
-                    <img src="../static/images/weixin.jpg" class="ui rounded bordered image right floated" style="width:110px">
+                    <img th:src="@{/static/images/weixin.jpg}" class="ui rounded bordered image right floated" style="width:110px">
                 </div>
             </div>
 
@@ -130,7 +130,7 @@
                         <h3 class="ui dividing header">Comments</h3>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="../static/images/kakaxi.jpg">
+                                <img th:src="@{/static/images/kakaxi.jpg}">
                             </a>
                             <div class="content">
                                 <a class="author">Matt</a>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="../static/images/kakaxi.jpg">
+                                <img th:src="@{/static/images/kakaxi.jpg}">
                             </a>
                             <div class="content">
                                 <a class="author">Elliot Fu</a>
@@ -164,7 +164,7 @@
                             <div class="comments">
                                 <div class="comment">
                                     <a class="avatar">
-                                        <img src="../static/images/kakaxi.jpg">
+                                        <img th:src="@{/static/images/kakaxi.jpg}">
                                     </a>
                                     <div class="content">
                                         <a class="author">Jenny Hess</a>
@@ -183,7 +183,7 @@
                         </div>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="../static/images/kakaxi.jpg">
+                                <img th:src="@{/static/images/kakaxi.jpg}">
                             </a>
                             <div class="content">
                                 <a class="author">Joe Henderson</a>
@@ -265,7 +265,7 @@
             <div class="three wide column ">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/images/weixin.jpg" class="ui rounded image " alt="" style="width:110px">
+                        <img th:src="@{/static/images/weixin.jpg}" class="ui rounded image " alt="" style="width:110px">
                     </div>
                 </div>
             </div>
@@ -305,11 +305,11 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="../static/lib/tocbot/tocbot.js"></script>
+<script th:src="@{/static/lib/tocbot/tocbot.js}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" href="../static/css/me.css">
-<script src="../static/lib/prism/prism.js"></script>
-<script src="../static/lib/qrcode/qrcode.js"></script>
+<link rel="stylesheet" th:href="@{/static/css/me.css}">
+<script th:src="@{/static/lib/prism/prism.js}"></script>
+<script th:src="@{/static/lib/qrcode/qrcode.js}"></script>
 
 <script>
     $("#toggleClassButton").click(function(){
@@ -355,21 +355,5 @@
     });
 
 </script>
-<style>
-    body{
-        background: none!important;
-
-    }
-</style>
 </body>
-
-<!--<script src="/static/js/jquery-3.0.0.min.js"></script>-->
-<!--<script>-->
-<!--    $(".menu .toggle").click(function(){-->
-<!--       $('.m-item').toggleClass('m-mobile-hide')-->
-<!--   })-->
-<!--</script>-->
-
-
-
 </html>

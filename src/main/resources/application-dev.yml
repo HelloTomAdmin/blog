@@ -9,8 +9,13 @@ spring:
       ddl-auto: update
     show-sql: true
 
+
 logging:
   level:
     root : info
     com.lrm: info
   file : log/blog-dev.log
+
+server:
+  port: 8090
+
