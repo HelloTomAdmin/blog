@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博详情页</title>
+<!--    <link rel="stylesheet" href="./static/css/typo.css">-->
+<!--    <link rel="stylesheet" href="./static/css/animate.css">-->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
+</head>
+
+<body>
+<!-- 导航-->
+<nav class="ui inverted stackable segment  m-padded-tb-mimi">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="home icon  "></i>  首页</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="idea icon "></i>  分类</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="tags icon "></i>  标签</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="clone icon "></i>  归档</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="info icon "></i>  关于我</a>
+            <div class="right item m-mobile-hide m-item menu toggle">
+                <div class="ui icon transparent inverted input">
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="toggleClassButton" class="ui  black icon button m-right-top m-mobile-show m-margin-top-small ">
+            <i class="sidebar icon"></i>
+        </a>
+    </div>
+
+</nav>
+<!-- 中间内容-->
+<div class="m-m-padded-tb-large  m-container-small animate__animated">
+    <div class="ui container">
+<!--        头部-->
+        <div class="ui top attached segment">
+            <div class="ui horizontal link list">
+                <div class="item">
+                    <img src="../static/images/kakaxi.jpg" alt="" class="ui avatar image">
+                    <div class="content"><a href="#" class="header">黎少康</a></div>
+                </div>
+                <div class="item">
+                    <!--                                                时间-->
+                    <i class="calendar icon"></i>2020-03-01
+                </div>
+                <div class="item">
+                    <!--                                                浏览次数-->
+                    <i class=" eye icon"></i>200
+                </div>
+            </div>
+        </div>
+        <div class="ui attached segment">
+<!--            图片区域-->
+            <img src="../static/images/background1.jpg" alt="" class="rounded ui fluid image">
+        </div>
+        <div class="ui  attached segment">
+<!--            内容-->
+
+                <div class="ui right aligned basic segment">
+                    <div class="ui orange label basic ">原创</div>
+                </div>
+                <h2 class="ui center aligned header">刻意练习的清单</h2>
+            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                <h1 id="insist">坚持练习</h1>
+                <h2 id="1">1</h2>
+                <pre><code class="language-css">p {color : red}</code></pre>
+                <pre><code class="language-css">p {color : red}</code></pre>
+                <p>刻意坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习练习</p>
+                <h2 id="2">2</h2>
+                <p>坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习</p>
+                <h2 id="3">3</h2>
+                <p>坚持练习坚持练坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习坚持练习</p>
+                <h1 id="attraction">吸引力法则</h1>
+            </div>
+<!--            标签-->
+            <div class="m-padded-lr-responsive">
+                <div class="ui basic teal pointing label">方法论</div>
+            </div>
+<!--            赞赏-->
+            <div class="ui center aligned segment basic">
+                <button id="payButton"  class="ui orange basic circular button">赞赏</button>
+            </div>
+
+<!--            赞赏二维码-->
+            <div id="payQ" class="ui flowing popup transition hidden">
+                <div class="ui orange basic label">
+                    <div class="ui image" style="font-size: inherit !important;">
+                        <img src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
+                        <div>支付宝</div>
+                    </div>
+                    <div class="ui image" style="font-size: inherit !important;">
+                        <img src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
+                        <div>微信</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="ui attached message positive">
+<!--            博客信息-->
+            <div class="ui grid">
+                <div class="eleven wide column">
+                    <ui class="list">
+                        <li>作者： 黎少康</li>
+                        <li>发表时间 ： 2020-09-25 17:28</li>
+                        <li>版本申请： 自由转载-非衍生-保持署名 </li>
+                        <li>公众号挂载</li>
+                    </ui>
+                </div>
+                <div class="five wide column">
+                    <img src="../static/images/weixin.jpg" class="ui rounded bordered image right floated" style="width:110px">
+                </div>
+            </div>
+
+
+        </div>
+        <div id="comment-container" class="ui attached segment bottom">
+            <!--留言区域-->
+            <div class="ui teal segment">
+                <div class="form">
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/kakaxi.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/kakaxi.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="../static/images/kakaxi.jpg">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/kakaxi.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="field">
+                    <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                </div>
+                <div class="fields">
+                    <div class="field m-mobile-wide m-margin-bottom-small">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="nickname" placeholder="姓名">
+
+                        </div>
+                    </div>
+                    <div class="field m-mobile-wide m-margin-bottom-small">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="text" name="mail" placeholder="邮箱">
+
+                        </div>
+                    </div>
+                    <div class="field m-mobile-wide m-margin-bottom-small">
+                        <button  class="ui teal button m-mobile-wide">
+                            发布
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+<div class="m-fixed m-right-bottom m-padded ">
+    <div class="ui vertical icon buttons ">
+        <button type="button"  class="ui teal button toc">目录</button>
+        <a href="#comment-container"  class="ui teal button">留言</a>
+        <button class="ui icon button wechat"><i class="weixin icon"></i></button>
+        <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
+    </div>
+</div>
+
+<div class="ui toc-tontainer flowing popup transition hidden" style="width:250px">
+<!--目录内容-->
+    <ol class="js-toc">
+    </ol>
+</div>
+<div id="qrcode" class="ui wechat-qr  flowing popup transition hidden m-padded-mini" style="width: 130px !important;">
+<!--    <img src="./static/images/weixin.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+</div>
+
+<br>
+<br>
+<!-- 底部footer-->
+
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid stackable">
+            <div class="three wide column ">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/weixin.jpg" class="ui rounded image " alt="" style="width:110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+
+                    <h4 class="io inverted header">最新微博</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                    </div>
+                </div>
+
+
+            <div class="three wide column">
+                <h4 class="io inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email：lisk94@163.com</a>
+                    <a href="#" class="item">QQ: 651900526</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="io inverted header">Lirenmi</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">这个是我的微博，分享我的一些学习经验,希望给大家一点帮助</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<!--    <div class="ui inverted divided container">-->
+
+    <div class="ui inverted section divider"></div>
+   <P class="ui center aligned container"> xx-xx-xx</P>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="../static/lib/tocbot/tocbot.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+<link rel="stylesheet" href="../static/css/me.css">
+<script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/qrcode/qrcode.js"></script>
+
+<script>
+    $("#toggleClassButton").click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    })
+    $('#payButton').popup({
+        popup : $('#payQ'),
+        on : 'click',
+        position : 'bottom center'
+    })
+    $('.toc.button').popup({
+        popup : $('.toc-tontainer.popup'),
+        on : 'click',
+        position : 'left center'
+    })
+
+   //初始化目录
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+
+    //微信弹出
+    $('.wechat').popup({
+        popup : $('.wechat-qr'),
+        position : 'left center'
+    })
+
+    //二维码生成
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: "http://www.baidu.com",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+</script>
+<style>
+    body{
+        background: none!important;
+
+    }
+</style>
+</body>
+
+<!--<script src="/static/js/jquery-3.0.0.min.js"></script>-->
+<!--<script>-->
+<!--    $(".menu .toggle").click(function(){-->
+<!--       $('.m-item').toggleClass('m-mobile-hide')-->
+<!--   })-->
+<!--</script>-->
+
+
+
+</html>
