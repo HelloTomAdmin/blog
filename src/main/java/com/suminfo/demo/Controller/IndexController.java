@@ -26,6 +26,7 @@ public class IndexController {
     @RequestMapping("/{id}/{name}")
     public String blog(@PathVariable Integer id,@PathVariable String name){
         logger.info("123");
+        System.out.println("测试");
         System.out.println("----------index-----------");
         return "index";
     }
