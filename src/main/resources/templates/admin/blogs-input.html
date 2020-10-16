@@ -7,12 +7,12 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script th:src="@{../static/lib/editormd/editormd.min.js}"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{../static/lib/editormd/editormd.min.js}"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" th:href="@{../static/css/me.css}">
+<link rel="stylesheet" href="../../static/css/me.css" th:href="@{../static/css/me.css}">
 <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" th:href="@{../static/lib/editormd/css/editormd.css}">
+<link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
 
 
 <body>
@@ -27,7 +27,7 @@
             <div class="right m-text m-mobile-hide menu">
                 <div class="ui dropdown item">
                     <div class="text">
-                        <img th:src="@{../static/images/touxiang.jpg}" alt="" class="ui avatar image">
+                        <img src="../../static/images/touxiang.jpg" th:src="@{../static/images/touxiang.jpg}" alt="" class="ui avatar image">
                         黎少康
                     </div>
                     <i class="dropdown icon"></i>
@@ -275,7 +275,7 @@
             width   : "100%",
             height  : 640,
             syncScrolling : "single",
-            path    : "../static/lib/editormd/lib/"
+            path    : "../../static/lib/editormd/lib/"
         });
     });
 </script>
