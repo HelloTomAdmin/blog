@@ -1,6 +1,7 @@
 package com.suminfo.demo.Controller;
 
 import com.suminfo.demo.Exception.NoFoundException;
+import com.suminfo.demo.po.Blog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ public class IndexController {
         logger.info("123");
         System.out.println("测试");
         System.out.println("----------index-----------");
+        Blog blog =new Blog();
+
         return "index";
     }
 }
