@@ -13,19 +13,23 @@
     <link rel="stylesheet" href="../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
 </head>
 <!-- 导航-->
-<nav th:fragment="menu(n)" class="ui inverted stackable segment  m-padded-tb-mimi">
+<nav th:fragment="menu(n)" class="ui inverted attached  stackable segment  m-padded-tb-mimi">
     <div class="ui container">
         <div class="ui inverted stackable secondary menu">
-            <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"> <i class="home icon  "></i>  首页</a>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==2}?'active'"> <i class="idea icon "></i>  分类</a>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"> <i class="tags icon "></i>  标签</a>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==4}?'active'"> <i class="clone icon "></i>  归档</a>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==5}?'active'"> <i class="info icon "></i>  关于我</a>
-            <div class="right item m-mobile-hide m-item menu toggle">
-                <div class="ui icon transparent inverted input">
-                    <input type="text" placeholder="Search....">
-                    <i class="search link icon"></i>
+            <h2 class="ui teal header item">管理后台</h2>
+            <a href="#" th:href="@{/admin/blogs}" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"> <i class="home icon  "></i>  博客</a>
+            <a href="#" th:href="@{/admin/types}" class="item m-mobile-hide m-item " th:classappend="${n==2}?'active'"> <i class="idea icon "></i>  分类</a>
+            <a href="#" th:href="@{/admin/tags}" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"> <i class="tags icon "></i>  标签</a>
+            <div class="right m-text m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="../../static/images/touxiang.jpg" th:src="@{../static/images/touxiang.jpg}" alt="" class="ui avatar image">
+                        黎少康
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
                 </div>
             </div>
         </div>

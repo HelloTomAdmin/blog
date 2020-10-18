@@ -14,4 +14,6 @@ public class BlogController {
     public String blogs(){
         return  "admin/blogs";
     }
+
+
 }
