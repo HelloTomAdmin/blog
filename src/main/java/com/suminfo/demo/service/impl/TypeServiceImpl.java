@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -57,5 +58,10 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type getTypeByName(String name) {
         return typeRespository.findByName(name);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeRespository.findAll();
     }
 }

@@ -2,6 +2,7 @@ package com.suminfo.demo.web;
 
 import com.suminfo.demo.po.Blog;
 import com.suminfo.demo.service.BlogService;
+import com.suminfo.demo.service.TypeService;
 import com.suminfo.demo.vo.BlogQuery;
 import com.sun.org.apache.regexp.internal.REUtil;
 import org.springframework.data.domain.Sort;
@@ -22,11 +23,13 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
+    @Resource
+    private TypeService typeService;
 
 
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size=3,sort={"updateTime"},direction = Sort.Direction.DESC)Pageable pageable, BlogQuery blog, Model model){
-
+            model.addAttribute("types", typeService.listType());
             model.addAttribute("page",blogService.listBlog(pageable,blog));
 
 
