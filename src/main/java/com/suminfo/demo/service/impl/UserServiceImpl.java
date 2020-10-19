@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.annotation.Resource;
+
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     @Override

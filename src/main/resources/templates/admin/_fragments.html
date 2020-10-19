@@ -11,16 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
-
 </head>
-<!--导航-->
-<nav th:replace="_fragments :: menu(n)"  class="ui inverted attached  stackable segment  m-padded-tb-mimi">
+<!-- 导航-->
+<nav th:fragment="menu(n)" class="ui inverted attached  stackable segment  m-padded-tb-mimi">
     <div class="ui container">
         <div class="ui inverted stackable secondary menu">
             <h2 class="ui teal header item">管理后台</h2>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"> <i class="home icon  "></i>  博客</a>
-            <a href="#" class="item m-mobile-hide m-item " th:classappend="${n==2}?'active'"> <i class="idea icon "></i>  分类</a>
-            <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"> <i class="tags icon "></i>  标签</a>
+            <a href="#" th:href="@{/admin/blogs}" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"> <i class="home icon  "></i>  博客</a>
+            <a href="#" th:href="@{/admin/types}" class="item m-mobile-hide m-item " th:classappend="${n==2}?'active'"> <i class="idea icon "></i>  分类</a>
+            <a href="#" th:href="@{/admin/tags}" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"> <i class="tags icon "></i>  标签</a>
             <div class="right m-text m-mobile-hide menu">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -40,7 +39,6 @@
     </div>
 
 </nav>
-
 
 <!--底部-->
 <footer th:fragment="footer" class="ui inverted segment vertical m-padded-tb-massive">
