@@ -44,11 +44,11 @@
     </div>
 
 </nav>
-<div class="ui bottom attached pointing menu">
+<div class="ui bottom attached pointing menu" >
     <div class="ui container">
         <div class="right  menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="item active teal">列表</a>
+            <a href="#" class="item active" th:href="@{/admin/types/input}">新增</a>
+            <a href="#" class="item  teal" th:href="@{/admin/types}">列表</a>
         </div>
     </div>
 
@@ -60,17 +60,16 @@
 <div class="  m-container-small m-m-padded-tb-big">
     <div class="ui container">
 <!--      标题-->
-        <form action="#" th:action="@{/admin/types}" class="ui form" method="post">
+        <form  action="#" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" th:object="${type}" class="ui form m-padded-lr" method="post">
+            <input  style="display: none" type="text" name="id" th:value="*{id}">
 
 
             <br>
             <br>
-
-
-            <div class="field">
+            <div class="field required">
                 <div class="ui left labeled input">
                     <label  class="ui teal basic label">名称</label>
-                    <input type="text" name="name" placeholder="分类名称">
+                    <input type="text" name="name" th:value="*{name} " placeholder="分类名称">
 
                 </div>
             </div>
@@ -79,6 +78,14 @@
 
 
             <div class="ui error message"></div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                <i class="close icon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{name}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+
 
             <div class="ui right aligned container">
                 <botton type="button" class="ui button" onclick="window.history.go(-1)">返回</botton>
@@ -106,11 +113,12 @@
 </div>
 <!-- 底部footer-->
 
-<!--/*/<th:block th:fragment="script">/*/-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<!--&lt;!&ndash;/*/<th:block th:fragment="script">/*/&ndash;&gt;-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>-->
 
-<!--/*/</th:block>/*/-->
+<!--&lt;!&ndash;/*/</th:block>/*/&ndash;&gt;-->
+
 <footer th:replace="admin/_fragments :: footer" class="ui inverted segment vertical m-padded-tb-massive">
     <div class="ui center aligned container">
         <div class="ui inverted divided grid stackable">
@@ -160,18 +168,14 @@
     $("#toggleClassButton").click(function(){
         $('.m-item').toggleClass('m-mobile-hide');
     })
-   $(".ui.dropdown").dropdown({
-       on : 'hover'
-   });
-
 
     $(".ui.form").form({
         fields:{
             title:{
-                identifier :'title',
+                identifier :'name',
                 rules:[{
                     type : 'empty',
-                    prompt: '标题：请输入博客标题'
+                    prompt: '请输入分类名称！'
                 }]
             }
         }
