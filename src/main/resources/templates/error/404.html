@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <title>404</title>
 </head>
 <body>
+<nav th:replace="_fragments :: menu(1)"></nav>
 <h1>页面找不到</h1>
+
+
+<footer th:replace="admin/_fragments :: footer">
+
+</footer>
 </body>
 </html>

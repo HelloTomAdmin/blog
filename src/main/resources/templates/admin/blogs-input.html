@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客管理</title>
-</head>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="../../static/lib/editormd/editormd.min.js" th:src="@{../static/lib/editormd/editormd.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{../static/lib/editormd/editormd.min.js}"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" href="../../static/css/me.css" th:href="@{../static/css/me.css}">
-<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{../static/css/me.css}">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
+</head>
+
 
 
 <body>
 <!-- 导航-->
-<nav class="ui inverted attached  stackable segment  m-padded-tb-mimi">
+<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached  stackable segment  m-padded-tb-mimi">
     <div class="ui container">
         <div class="ui inverted stackable secondary menu">
             <h2 class="ui teal header item">管理后台</h2>
@@ -56,16 +57,16 @@
 
 
 <!-- 中间内容-->
-<div class="  m-container-small m-m-padded-tb-big">
+<div class="  m-container-small m-padded-tb-big">
     <div class="ui container">
 <!--      标题-->
-        <form action="#" class="ui form" method="post">
-
-
+        <form id="blog-form" th:object="${blog}" action="#" th:action="@{/admin/blogs}" class="ui form" method="post">
+            <input type="hidden" name="id" th:value="*{id}">
+            <input type="hidden" name="published">
             <div class="required field">
                 <div class="ui left labeled input">
                     <div class="ui teal basic label selection compact dropdown">
-                        <input type="hidden" value="原创">
+                        <input type="hidden" value="原创" name="flag" th:value="*{flag}">
                         <i class="dropdown icon"></i>
                         <div class="text">原创</div>
                         <div class="menu">
@@ -74,56 +75,28 @@
                             <div class="item" data-value="翻译">翻译</div>
                         </div>
                     </div>
-                    <input type="text" name="title" placeholder="标题"></input>
+                    <input type="text" name="title" placeholder="标题" th:value="*{title}"></input>
                 </div>
             </div>
-            <div class="field">
+            <div class="field requested">
                 <div id="md-content" style="z-index: 1 !important;">
-                    <textarea style="display: none" placeholder="博客内容" name="content" type="text">
-[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-
-                    </textarea>
-
+                    <textarea th:text="*{content}" style="display: none" placeholder="博客内容" name="content" type="text"></textarea>
                 </div>
             </div>
 
             <div class="two fields">
-                <div class="field">
+                <div class="field requested">
                     <div class="ui left labeled action input">
                         <div class="ui compact teal basic label">分类</div>
                         <div class="ui selection fluid dropdown">
-                            <input type="hidden">
+                            <input type="hidden" name="type.id" th:value="*{type.id}">
                             <i class="dropdown icon"></i>
                             <div class="default text">分类</div>
                             <div class="menu">
-                                <div class="item" data-value="1">错误日志</div>
+                                <div th:each="abc: ${types}" class="item" data-value="1"  th:data-value="${abc.id}" th:text="${abc.name}">xxxx</div>
+<!--                                /*-->
                                 <div class="item" data-value="2">开发者手册</div>
-
+<!--                                 */-->
                             </div>
                         </div>
                     </div>
@@ -132,12 +105,14 @@
                     <div class="ui left labeled action input">
                         <div class="ui compact teal basic label">标签</div>
                         <div class="ui selection fluid multiple search dropdown">
-                            <input type="hidden">
+                            <input type="hidden" name="tagIds" th:value="*{tagIds}">
                             <i class="dropdown icon"></i>
                             <div class="default text">标签</div>
                             <div class="menu">
                                 <div class="item" data-value="1">java</div>
-                                <div class="item" data-value="2">javaScript</div>
+                                <div th:each="abc: ${tags}" class="item" th:data-value="${abc.id}" th:text="${abc.name}"></div>
+
+<!--                             <div class="item" data-value="2">javaScript</div>-->
 
                             </div>
                         </div>
@@ -147,10 +122,10 @@
 
             </div>
 
-            <div class="field">
+            <div class="field requested">
                 <div class="ui left labeled input">
                     <label  class="ui teal basic label">首图</label>
-                    <input type="text" name="indexPicture" placeholder="首图引用地址">
+                    <input type="text" name="firstPicture" th:value="*{firstPicture}" placeholder="首图引用地址">
 
                 </div>
             </div>
@@ -159,26 +134,26 @@
             <div class="inline fields">
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="recommend" name="recommend" checked class="hidden">
+                        <input type="checkbox" id="recommend" name="recommend" checked th:checked="*{recommend}"  class="hidden">
                         <label for="recommend">推荐</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="shareInfo" name="shareInfo" class="hidden">
-                        <label for="shareInfo">转载声明</label>
+                        <input type="checkbox" id="shareStatement" name="shareStatement" th:checked="*{shareStatement}" class="hidden">
+                        <label for="shareStatement">转载声明</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="appreciation" name="appreciation" class="hidden">
+                        <input type="checkbox" id="appreciation" name="appreciation" th:checked="*{appreciation}" class="hidden">
                         <label for="appreciation">赞赏</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="comment" name="comment" class="hidden">
-                        <label for="comment">评论</label>
+                        <input type="checkbox"  id="commentabled" name="commentabled" th:checked="*{commentabled}" class="hidden">
+                        <label for="commentabled">评论</label>
                     </div>
                 </div>
             </div>
@@ -187,8 +162,8 @@
 
             <div class="ui right aligned container">
                 <botton type="button" class="ui button" onclick="window.history.go(-1)">返回</botton>
-                <button class="ui secondary button">保存</button>
-                <button class="ui teal button">发布</button>
+                <button type="button" class="ui secondary button" id="save-btn">保存</button>
+                <button type="button" class="ui teal button" id="publish-btn">发布</button>
             </div>
 
         </form>
@@ -202,7 +177,7 @@
 <!-- 底部footer-->
 
 
-<footer class="ui inverted segment vertical m-padded-tb-massive">
+<footer  th:fragment="footer" class="ui inverted segment vertical m-padded-tb-massive">
     <div class="ui center aligned container">
         <div class="ui inverted divided grid stackable">
             <div class="three wide column ">
@@ -264,9 +239,51 @@
                     type : 'empty',
                     prompt: '标题：请输入博客标题'
                 }]
+            },
+            content:{
+                identifier :'content',
+                rules:[{
+                    type : 'empty',
+                    prompt: '标题：请输入博客内容'
+                }]
+            },
+            "type.id":{
+                identifier :'type.id',
+                rules:[{
+                    type : 'empty',
+                    prompt: '标题：请输入博客分类'
+                }]
+            },
+            firstPicture:{
+                identifier :'firstPicture',
+                rules:[{
+                    type : 'empty',
+                    prompt: '标题：请输入博客首图'
+                }]
             }
         }
     })
+
+    $("#save-btn").click(function () {
+        $("#recommend").val($("#recommend")[0].checked?1:0);
+        $("#shareStatement").val($("#shareStatement")[0].checked?1:0);
+        $("#appreciation").val($("#appreciation")[0].checked?1:0);
+        $("#commentabled").val($("#commentabled")[0].checked?1:0);
+
+        $('[name="published"]').val(false);
+        $("#blog-form").submit();
+    });
+
+
+    $("#publish-btn").click(function () {
+
+        $("#recommend").val($("#recommend")[0].checked?1:0);
+        $("#shareStatement").val($("#shareStatement")[0].checked?1:0);
+        $("#appreciation").val($("#appreciation")[0].checked?1:0);
+        $("#commentabled").val($("#commentabled")[0].checked?1:0);
+        $('[name="published"]').val(true);
+        $("#blog-form").submit();
+    });
 
     //初始化Markdown编译器
     var contentEditor;
@@ -275,7 +292,8 @@
             width   : "100%",
             height  : 640,
             syncScrolling : "single",
-            path    : "../../static/lib/editormd/lib/"
+            // path    : "../../static/lib/editormd/lib/"
+            path : "/static/lib/editormd/lib/"
         });
     });
 </script>

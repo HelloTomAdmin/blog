@@ -2,6 +2,8 @@ package com.suminfo.demo.po;
 
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Entity
 @Table(name="t_blog")
+@DynamicInsert
+@DynamicUpdate
 public class Blog {
 
 
@@ -17,14 +21,17 @@ public class Blog {
     @GeneratedValue
     private Long id;
     private String title;
+
+    @Basic(fetch = FetchType.LAZY)//懒加载
+    @Lob  //大字段类型
     private String content;
-    private String firstPicture;
+    private String firstPicture;  //首图
     private String flag;
     private Integer views;
-    private boolean appreciation;
-    private boolean shareStatement;
-    private boolean commentabled;
-    private boolean published;
+    private boolean appreciation;  //赞赏
+    private boolean shareStatement;  //转载声明
+    private boolean commentabled; //评论
+    private boolean published;  // 1 是true  0 false  发布状态
     private boolean recommend;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -40,6 +47,9 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog")
     private List<Comment>comments =new ArrayList<>();
+
+    @Transient//表示单纯的对象属性，不加载到数据库
+    private String tagIds;
 
     public Blog() {
     }
@@ -59,6 +69,15 @@ public class Blog {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
     public Long getId() {
         return id;
     }
@@ -194,4 +213,26 @@ public class Blog {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public void init(){
+        this.tagIds=tagsToIds(this.getTags());
+    }
+    private String tagsToIds(List<Tag> tags){
+        if(!tags.isEmpty()){
+            StringBuffer ids =new StringBuffer();
+            Boolean flag = false;
+            for (Tag tag : tags) {
+                if(flag){
+                    ids.append(",");
+                }else{
+                    flag=true;
+                }
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        }else{
+            return  tagIds;
+        }
+    }
+
 }

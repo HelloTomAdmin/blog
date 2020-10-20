@@ -64,9 +64,9 @@
                         <input type="hidden" name="typeId">
                         <i class="icon dropdown"></i>
                         <div class="default text">分类</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">错误日志</div>
-                            <div class="item" data-value="2">开发者日志</div>
+                        <div class="menu" >
+                            <div th:each="abc: ${types}" class="item" th:data-value="${abc.id}" th:text="${abc.name}"></div>
+<!--                            <div class="item" data-value="2">开发者日志</div>-->
                         </div>
                     </div>
                 </div>
@@ -86,12 +86,14 @@
         </div>
         <div id="table-containe">
             <table th:fragment="blogList" class="ui compact teal celled table">
+
                 <thead>
                 <tr>
                     <th></th>
                     <th>标题</th>
                     <th>类型</th>
                     <th>推荐</th>
+                    <th>状态</th>
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
@@ -102,6 +104,7 @@
                     <td th:text="${blog.title}">刻意练习清单</td>
                     <td th:text="${blog.type.name}">认知升级</td>
                     <td th:text="${blog.recommend ?'是':'否'}">是</td>
+                    <td th:text="${blog.published?'发布':'草稿'}"></td>
                     <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
@@ -112,17 +115,29 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="6">
+                    <th colspan="7">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)"  href="#"  th:attr="data-page=${page.number}-1"  class="ui mini teal basic button">编辑</a>
-                            <a onclick="page(this)" href="#" th:attr="data-page=${page.number}+1" class="ui mini red basic button">删除</a>
+<!--                            <a onclick="page(this)"  href="#"  th:attr="data-page=${page.number}-1"  class="ui mini teal basic button">上一页</a>-->
+<!--                            <a onclick="page(this)" href="#" th:attr="data-page=${page.number}+1" class="ui mini red basic button">下一页</a>-->
+                            <a href="#" th:href="@{/admin/blogs(page=${page.number}-1)}" th:unless="${page.first}" class="item" >上一页</a>
+                            <a href="#" th:href="@{/admin/blogs(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
                         </div>
-                        <a href="" class="ui mini right floated teal basic button ">新增</a>
+                        <a href="" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button ">新增</a>
                     </th>
                 </tr>
                 </tfoot>
             </table>
+
+            <div class="ui container">
+                <div id="messageValue" class="ui success message"  th:unless="${#strings.isEmpty(message)}">
+                    <i class="close icon"></i>
+                    <div class="header">提示：</div>
+                    <p th:text="${message}">恭喜,操作成功！</p>
+                </div>
+
+            </div>
         </div>
+
 
     </div>
 
@@ -211,6 +226,12 @@
         loaddata();
     })
 
+
+    // 隐藏提示错误信息
+    $(".message .close").on("click",function(){
+        // $(this).closest().translate('fade')
+        $("#messageValue").fadeOut();
+    })
 
 
 

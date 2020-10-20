@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签新增</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{../static/lib/editormd/editormd.min.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{../static/css/me.css}">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css" th:href="@{../static/lib/editormd/css/editormd.css}">
+</head>
+
+
+
+
+<body>
+<!-- 导航-->
+<nav class="ui inverted attached  stackable segment  m-padded-tb-mimi" th:replace="admin/_fragments :: menu(3)">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu">
+            <h2 class="ui teal header item">管理后台</h2>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="home icon  "></i>  博客</a>
+            <a href="#" class="item m-mobile-hide m-item "> <i class="idea icon "></i>  分类</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="tags icon "></i>  标签</a>
+            <div class="right m-text m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="../../static/images/touxiang.jpg" th:src="@{../static/images/touxiang.jpg}" alt="" class="ui avatar image">
+                        黎少康
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="toggleClassButton" class="ui  black icon button m-right-top m-mobile-show m-margin-top-small ">
+            <i class="sidebar icon"></i>
+        </a>
+    </div>
+
+</nav>
+<div class="ui bottom attached pointing menu" >
+    <div class="ui container">
+        <div class="right  menu">
+            <a href="#" class="item active" th:href="@{/admin/tags/input}">新增</a>
+            <a href="#" class="item  teal" th:href="@{/admin/tags}">列表</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- 中间内容-->
+<div class="  m-container-small m-m-padded-tb-big">
+    <div class="ui container">
+<!--      标题-->
+        <form  action="#" th:action="*{id}==null ? @{/admin/tags} : @{/admin/tags/{id}(id=*{id})}" th:object="${tag}" class="ui form m-padded-lr" method="post">
+            <input  style="display: none" type="text" name="id" th:value="*{id}">
+
+
+            <br>
+            <br>
+            <div class="field required">
+                <div class="ui left labeled input">
+                    <label  class="ui teal basic label">名称</label>
+                    <input type="text" name="name" th:value="*{name} " placeholder="标签名称">
+
+                </div>
+            </div>
+
+
+
+
+            <div class="ui error message"></div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                <i class="close icon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{name}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+
+
+            <div class="ui right aligned container">
+                <botton type="button" class="ui button" onclick="window.history.go(-1)">返回</botton>
+                <button class="ui teal button">提交</button>
+            </div>
+
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+
+</div>
+<!-- 底部footer-->
+
+<!--&lt;!&ndash;/*/<th:block th:fragment="script">/*/&ndash;&gt;-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>-->
+
+<!--&lt;!&ndash;/*/</th:block>/*/&ndash;&gt;-->
+
+<footer th:replace="admin/_fragments :: footer" class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid stackable">
+            <div class="three wide column ">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img th:src="@{../static/images/weixin.jpg}" class="ui rounded image " alt="" style="width:110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+
+                    <h4 class="io inverted header">最新微博</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                    </div>
+                </div>
+
+
+            <div class="three wide column">
+                <h4 class="io inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email：lisk94@163.com</a>
+                    <a href="#" class="item">QQ: 651900526</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="io inverted header">Lirenmi</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">这个是我的微博，分享我的一些学习经验,希望给大家一点帮助</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="ui inverted section divider"></div>
+   <P class="ui center aligned container"> xx-xx-xx</P>
+    </div>
+</footer>
+
+
+<script>
+    $("#toggleClassButton").click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    })
+
+    $(".ui.form").form({
+        fields:{
+            title:{
+                identifier :'name',
+                rules:[{
+                    type : 'empty',
+                    prompt: '请输入分类名称！'
+                }]
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>
