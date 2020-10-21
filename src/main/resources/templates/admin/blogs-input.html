@@ -47,8 +47,8 @@
 <div class="ui bottom attached pointing menu">
     <div class="ui container">
         <div class="right  menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="item active teal">列表</a>
+            <a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
+            <a href="#" th:href="@{/admin/blogs}" class="item active teal">列表</a>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
     <div class="ui container">
 <!--      标题-->
         <form id="blog-form" th:object="${blog}" action="#" th:action="@{/admin/blogs}" class="ui form" method="post">
-            <input type="hidden" name="id" th:value="*{id}">
+            <input type="hidden" name="id" th:value="*{id}!=null ?*{id}:''">
             <input type="hidden" name="published">
             <div class="required field">
                 <div class="ui left labeled input">
@@ -89,7 +89,7 @@
                     <div class="ui left labeled action input">
                         <div class="ui compact teal basic label">分类</div>
                         <div class="ui selection fluid dropdown">
-                            <input type="hidden" name="type.id" th:value="*{type.id}">
+                            <input type="hidden" name="type.id" th:value="*{type}!=null ? *{type.id}:'' ">
                             <i class="dropdown icon"></i>
                             <div class="default text">分类</div>
                             <div class="menu">
@@ -109,7 +109,7 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">标签</div>
                             <div class="menu">
-                                <div class="item" data-value="1">java</div>
+                                <!--<div class="item" data-value="1">java</div>-->
                                 <div th:each="abc: ${tags}" class="item" th:data-value="${abc.id}" th:text="${abc.name}"></div>
 
 <!--                             <div class="item" data-value="2">javaScript</div>-->

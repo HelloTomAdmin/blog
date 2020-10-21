@@ -51,6 +51,18 @@ public class Blog {
     @Transient//表示单纯的对象属性，不加载到数据库
     private String tagIds;
 
+
+    private String description;
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Blog() {
     }
 

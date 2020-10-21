@@ -73,10 +73,10 @@ public class BlogController {
     }
 
     @GetMapping("/blogs/input")
-    public String input(Model model, @PathVariable Long id){
+    public String input(Model model){
         setTypeAndTag(model);
 
-        model.addAttribute("blog",blogService.getBlog(id));
+        model.addAttribute("blog",new Blog());
         return  INPUT;
     }
     @PostMapping("/blogs")
@@ -97,5 +97,12 @@ public class BlogController {
         return REDIRECT_LIST;
     }
 
+
+    @GetMapping("/blogs/{id}/delete")
+    public String delete(@PathVariable Long id,RedirectAttributes attributes){
+        blogService.deleteBlog(id);
+        attributes.addFlashAttribute("message","删除成功");
+        return REDIRECT_LIST;
+    }
 
 }
