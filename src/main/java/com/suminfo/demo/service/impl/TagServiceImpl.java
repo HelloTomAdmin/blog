@@ -7,10 +7,7 @@ import com.suminfo.demo.po.Tag;
 import com.suminfo.demo.service.TagService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -78,5 +75,14 @@ public class TagServiceImpl implements TagService {
         }
 
         return tags;
+    }
+
+    @Override
+    public List<Tag> listTagTop(Integer size) {
+
+
+        Sort sort=Sort.by(Sort.Direction.DESC,"blogs.zize");
+        Pageable pageable=PageRequest.of(0,size,sort);
+        return repository.findTop(pageable);
     }
 }
