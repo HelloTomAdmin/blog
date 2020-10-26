@@ -55,7 +55,7 @@
                 <div class="ui padded vertical segment m-padded-tb-large" th:each="blog:${page.content}">
                     <div class="ui attached mobile reversed grid stackable" >
                         <div class="eleven wide column">
-                                <h3> <a  class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})" href="#" th:text="${blog.title}">你理解什么是真正的财富自由吗</a></h3>
+                                <h3> <a  class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" href="#" th:text="${blog.title}">你理解什么是真正的财富自由吗</a></h3>
                             <p class="m-text-thin m-text" th:text="| ${blog.description}......| ">做好任何一件事情
                                 ,做好任何一件事情,做好任何一件事情,做好任何一件事情,做好任何一件事情,做好任何一件事情,</p>
                             <!--                                  小标题开始  -->
@@ -87,7 +87,7 @@
 
                         </div>
                         <div class="five wide column">
-                            <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})">
+                            <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
                                 <!--th:src="@{/static/images/kakaxi.jpg}"-->
                                 <img src="../static/images/kakaxi.jpg" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image imgStyle">
 
@@ -239,7 +239,7 @@
                         <div class="eleven wide column">
                             <h3>你理解什么是真正的财富自由吗</h3>
                             <p class="m-text-thin m-text">做好任何一件事情</p>
-                            <!--                                  小标题开始  -->
+                            <!-- 小标题开始  -->
                             <div class="ui grid">
 
 
@@ -444,7 +444,7 @@
                     <div class="ui teal segment">
                         <div class="ui fluid vertical menu" >
                             <a href="#" class="item" th:each="type :${types}">
-                                <span th:text="type.name">学习日志</span>
+                                <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
                             <!--/*-->
@@ -527,7 +527,7 @@
 
                     </div>
                     <div class="ui segment" th:each="blog :${recommendBlogs}">
-                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})" target="_blank" class="m-black" th:text="${blog.title}">用户故事(User Story)</a>
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">用户故事(User Story)</a>
                     </div>
                     <!--/*-->
                     <div class="ui segment">

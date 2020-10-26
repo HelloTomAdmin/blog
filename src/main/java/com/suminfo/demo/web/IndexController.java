@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
 
@@ -42,10 +43,35 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/blog")
-    public String blog(){
+    @GetMapping("/blog/{id}")
+    public String blog(@PathVariable Long id){
         return "blog";
 
     }
+
+    @GetMapping("/tags")
+    public String tags(){
+        return "tags";
+
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "about";
+    }
+    @GetMapping("/types")
+    public String types(){
+        return "types";
+    }
+    @GetMapping("/archievs")
+    public String archievs(){
+        return "archievs";
+    }
+    @GetMapping("/blogIndex")
+    public String blogs(){
+        return "blog";
+    }
+
+
 
 }

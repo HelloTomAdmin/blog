@@ -81,7 +81,7 @@ public class TagServiceImpl implements TagService {
     public List<Tag> listTagTop(Integer size) {
 
 
-        Sort sort=Sort.by(Sort.Direction.DESC,"blogs.zize");
+        Sort sort=Sort.by(Sort.Direction.DESC,"blogs.size");
         Pageable pageable=PageRequest.of(0,size,sort);
         return repository.findTop(pageable);
     }
