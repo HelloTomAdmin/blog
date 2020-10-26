@@ -24,8 +24,9 @@
             <a href="#" th:href="@{/admin/tags}" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"> <i class="tags icon "></i>  标签</a>
             <div class="right m-text m-mobile-hide menu">
                 <div class="ui dropdown item">
+<!--                    th:src="@{../static/images/touxiang.jpg}"-->
                     <div class="text">
-                        <img src="../../static/images/touxiang.jpg" th:src="@{../static/images/touxiang.jpg}" alt="" class="ui avatar image">
+                        <img src="../../static/images/touxiang.jpg"   th:src="@{${session.user.avatar}}" alt="" class="ui avatar image">
                         黎少康
                     </div>
                     <i class="dropdown icon"></i>

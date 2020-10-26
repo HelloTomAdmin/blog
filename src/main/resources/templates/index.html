@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/static/css/me.css}">
-</head>
 
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+<link rel="stylesheet" href="../static/css/me.css" th:href="@{/static/css/me.css}">
 
 <body>
 <!-- 导航-->
@@ -51,8 +51,8 @@
                 </div>
             </div>
             <!-- content-->
-            <div class="ui  segment ">
-                <div class="ui padded vertical segment m-padded-tb-large" th:each="blog:${page.content}">
+            <div class="ui  segment " th:each="blog:${page.content}">
+                <div class="ui padded vertical segment m-padded-tb-large" >
                     <div class="ui attached mobile reversed grid stackable" >
                         <div class="eleven wide column">
                                 <h3> <a  class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" href="#" th:text="${blog.title}">你理解什么是真正的财富自由吗</a></h3>
