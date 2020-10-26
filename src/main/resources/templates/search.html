@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博搜索结果</title>
+</head>
+
+<body>
+<!-- 导航-->
+<nav class="ui inverted stackable segment  m-padded-tb-mimi" th:replace="_fragments :: menu(3)">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="home icon  "></i>  首页</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="idea icon "></i>  分类</a>
+            <a href="#" class="item m-mobile-hide m-item active" > <i class="tags icon "></i>  标签</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="clone icon "></i>  归档</a>
+            <a href="#" class="item m-mobile-hide m-item"> <i class="info icon "></i>  关于我</a>
+            <div class="right item m-mobile-hide m-item menu toggle">
+                <div class="ui icon transparent inverted input">
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="toggleClassButton" class="ui  black icon button m-right-top m-mobile-show m-margin-top-small ">
+            <i class="sidebar icon"></i>
+        </a>
+    </div>
+
+</nav>
+<!-- 中间内容-->
+<div class="  m-container-small m-m-padded-tb-big">
+
+    <div class="ui container">
+        <!--标签-->
+        <div class="ui  attached segment ">
+
+                <div class="ui middle aligned two column grid">
+                    <div class="column">
+                        <h3 class="ui teal header">搜索结果</h3>
+                    </div>
+                    <div class="right aligned column">
+                        共<h2 class="ui orange header m-inline-block m-text-thin">12</h2>篇
+                    </div>
+                </div>
+
+
+        </div>
+<!--        分类分组-->
+
+
+            <!--文章-->
+
+                <div class="ui  top attached teal segment">
+                    <div class="ui   segment " th:each="blog:${page.content}">
+                        <div class="ui padded vertical segment m-padded-tb-large" >
+                            <div class="ui attached mobile reversed grid stackable" >
+                                <div class="eleven wide column">
+                                    <h3> <a  class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" href="#" th:text="${blog.title}">你理解什么是真正的财富自由吗</a></h3>
+                                    <p class="m-text-thin m-text" th:text="| ${blog.description}......| ">做好任何一件事情
+                                        ,做好任何一件事情,做好任何一件事情,做好任何一件事情,做好任何一件事情,做好任何一件事情,</p>
+                                    <!--                                  小标题开始  -->
+                                    <div class="ui grid">
+
+
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list">
+                                                <div class="item">
+                                                    <!--th:src="@{/static/images/kakaxi.jpg}"-->
+                                                    <img src="../static/images/kakaxi.jpg" th:src="@{${blog.user.avatar}}"   alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">黎少康</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <!--                                                时间-->
+                                                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-03-01</span>
+                                                </div>
+                                                <div class="item">
+                                                    <!--                                                浏览次数-->
+                                                    <i class=" eye icon"></i> <span th:text="${blog.views}">200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" th:text="${blog.type.name}" class="ui teal  basic label m-padded-mini">认知升级 </a>
+                                        </div>
+                                    </div>
+                                    <!--                            小标题结束-->
+
+                                </div>
+                                <div class="five wide column">
+                                    <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
+                                        <!--th:src="@{/static/images/kakaxi.jpg}"-->
+                                        <img src="../static/images/kakaxi.jpg" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image imgStyle">
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            <!--分页-->
+            <div class="ui attached bottom  segment">
+                <div class="ui middle two column grid">
+                    <div class="column">
+                        <a href="#" class="ui mini teal basic button">上一页</a>
+                    </div>
+                    <div class="column right aligned ">
+                        <a href="#" class="ui mini teal basic button">下一页</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+    </div>
+
+<br>
+<br>
+
+</div>
+<!-- 底部footer-->
+
+
+<footer th:fragment="footer" class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid stackable">
+            <div class="three wide column ">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img th:src="@{/static/images/weixin.jpg}" class="ui rounded image " alt="" style="width:110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+
+                    <h4 class="io inverted header">最新微博</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                        <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                    </div>
+                </div>
+
+
+            <div class="three wide column">
+                <h4 class="io inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email：lisk94@163.com</a>
+                    <a href="#" class="item">QQ: 651900526</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="io inverted header">Lirenmi</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">这个是我的微博，分享我的一些学习经验,希望给大家一点帮助</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<!--    <div class="ui inverted divided container">-->
+
+    <div class="ui inverted section divider"></div>
+   <P class="ui center aligned container"> xx-xx-xx</P>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+<link rel="stylesheet" th:href="@{/static/css/me.css}">
+
+<script>
+    $("#toggleClassButton").click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    })
+    $('#payButton').popup({
+        popup : $('#payQ'),
+        on : 'click',
+        position : 'bottom center'
+    })
+</script>
+</body>
+</html>
