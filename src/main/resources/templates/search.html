@@ -42,7 +42,7 @@
                         <h3 class="ui teal header">搜索结果</h3>
                     </div>
                     <div class="right aligned column">
-                        共<h2 class="ui orange header m-inline-block m-text-thin">12</h2>篇
+                        共<h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}">12</h2>篇
                     </div>
                 </div>
 
@@ -54,8 +54,8 @@
             <!--文章-->
 
                 <div class="ui  top attached teal segment">
-                    <div class="ui   segment " th:each="blog:${page.content}">
-                        <div class="ui padded vertical segment m-padded-tb-large" >
+
+                        <div class="ui padded vertical segment m-padded-tb-large" th:each="blog:${page.content}">
                             <div class="ui attached mobile reversed grid stackable" >
                                 <div class="eleven wide column">
                                     <h3> <a  class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" href="#" th:text="${blog.title}">你理解什么是真正的财富自由吗</a></h3>
@@ -100,7 +100,7 @@
                         </div>
 
 
-                    </div>
+
 
 
                 </div>
@@ -108,20 +108,32 @@
 
 
             <!--分页-->
-            <div class="ui attached bottom  segment">
-                <div class="ui middle two column grid">
-                    <div class="column">
-                        <a href="#" class="ui mini teal basic button">上一页</a>
-                    </div>
-                    <div class="column right aligned ">
-                        <a href="#" class="ui mini teal basic button">下一页</a>
-                    </div>
+            <!--<div class="ui attached bottom  segment">-->
+                <!--<div class="ui middle two column grid">-->
+                    <!--<div class="column">-->
+                        <!--<a href="#" class="ui mini teal basic button">上一页</a>-->
+                    <!--</div>-->
+                    <!--<div class="column right aligned ">-->
+                        <!--<a href="#" class="ui mini teal basic button">下一页</a>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <!---->
+            <!--</div>-->
+
+        <div class="ui bottom attached segment" th:if="${page.totalPages>1}">
+            <div class="ui middle two column grid">
+                <div class="column">
+                    <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
                 </div>
-
-
+                <div class="column right aligned ">
+                    <a href="#" th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
+                </div>
             </div>
 
 
+        </div>
 
     </div>
 
@@ -179,7 +191,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" th:href="@{/static/css/me.css}">
+<link rel="stylesheet" href="../static/css/me.css" th:href="@{/static/css/me.css}">
 
 <script>
     $("#toggleClassButton").click(function(){
