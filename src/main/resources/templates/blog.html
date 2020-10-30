@@ -41,31 +41,33 @@
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item">
-                    <img th:src="@{/static/images/kakaxi.jpg}" alt="" class="ui avatar image">
-                    <div class="content"><a href="#" class="header">黎少康</a></div>
+<!--                    th:src="@{/static/images/kakaxi.jpg}"-->
+                    <img  src="../static/images/kakaxi.jpg"  th:src="@{${blog.user.avatar!=null?blog.user.avatar:''}}" alt="" class="ui avatar image">
+                    <div class="content"><a href="#" class="header"  th:src="@{${blog.user.avatar}}">黎少康</a></div>
                 </div>
                 <div class="item">
                     <!--                                                时间-->
-                    <i class="calendar icon"></i>2020-03-01
+                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-03-01</span>
                 </div>
                 <div class="item">
                     <!--                                                浏览次数-->
-                    <i class=" eye icon"></i>200
+                    <i class=" eye icon"></i><span th:text="${blog.views}">200</span>
                 </div>
             </div>
         </div>
         <div class="ui attached segment">
 <!--            图片区域-->
-            <img th:src="@{/static/images/background1.jpg}" alt="" class="rounded ui fluid image">
+<!--            th:src="@{/static/images/background1.jpg}"-->
+            <img th:src="@{${blog.firstPicture}}"  src="../static/images/background1.jpg" alt="" class="rounded ui fluid image">
         </div>
         <div class="ui  attached segment">
 <!--            内容-->
 
                 <div class="ui right aligned basic segment">
-                    <div class="ui orange label basic ">原创</div>
+                    <div class="ui orange label basic " th:text="${blog.flag}">原创</div>
                 </div>
-                <h2 class="ui center aligned header">刻意练习的清单</h2>
-            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                <h2 class="ui center aligned header" th:text="${blog.title}">刻意练习的清单</h2>
+            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:text="${blog.content}">
                 <h1 id="insist">坚持练习</h1>
                 <h2 id="1">1</h2>
                 <pre><code class="language-css">p {color : red}</code></pre>
@@ -79,7 +81,7 @@
             </div>
 <!--            标签-->
             <div class="m-padded-lr-responsive">
-                <div class="ui basic teal pointing label">方法论</div>
+                <div class="ui basic teal pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
             </div>
 <!--            赞赏-->
             <div class="ui center aligned segment basic">
@@ -90,11 +92,11 @@
             <div id="payQ" class="ui flowing popup transition hidden">
                 <div class="ui orange basic label">
                     <div class="ui image" style="font-size: inherit !important;">
-                        <img th:src="@{/static/images/weixin.jpg}" alt="" class="round ui bordered image" style="width :120px">
+                        <img th:src="@{/static/images/weixin.jpg}" src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
                         <div>支付宝</div>
                     </div>
                     <div class="ui image" style="font-size: inherit !important;">
-                        <img th:src="@{/static/images/weixin.jpg}" alt="" class="round ui bordered image" style="width :120px">
+                        <img th:src="@{/static/images/weixin.jpg}" src="../static/images/weixin.jpg" alt="" class="round ui bordered image" style="width :120px">
                         <div>微信</div>
                     </div>
 
@@ -109,14 +111,14 @@
             <div class="ui grid">
                 <div class="eleven wide column">
                     <ui class="list">
-                        <li>作者： 黎少康</li>
-                        <li>发表时间 ： 2020-09-25 17:28</li>
+                        <li>作者： <span th:text="${blog.user.nickname}">黎少康</span><a href="#" th:href="@{/about}" target="_blank">(联系作者)</a></li>
+                        <li>发表时间 ： <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}">2020-09-25 17:28</span></li>
                         <li>版本申请： 自由转载-非衍生-保持署名 </li>
                         <li>公众号挂载</li>
                     </ui>
                 </div>
                 <div class="five wide column">
-                    <img th:src="@{/static/images/weixin.jpg}" class="ui rounded bordered image right floated" style="width:110px">
+                    <img th:src="@{/static/images/weixin.jpg}" src="../static/images/weixin.jpg" class="ui rounded bordered image right floated" style="width:110px">
                 </div>
             </div>
 
@@ -305,11 +307,11 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script th:src="@{/static/lib/tocbot/tocbot.js}"></script>
+<script th:src="@{/static/lib/tocbot/tocbot.js}" src="../static/lib/tocbot/tocbot.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-<link rel="stylesheet" th:href="@{/static/css/me.css}">
-<script th:src="@{/static/lib/prism/prism.js}"></script>
-<script th:src="@{/static/lib/qrcode/qrcode.js}"></script>
+<link rel="stylesheet" th:href="@{/static/css/me.css}" href="../static/css/me.css">
+<script th:src="@{/static/lib/prism/prism.js}" src="../static/lib/prism/prism.js"></script>
+<script th:src="@{/static/lib/qrcode/qrcode.js}" src="../static/lib/qrcode/qrcode.js"></script>
 
 <script>
     $("#toggleClassButton").click(function(){

@@ -27,7 +27,7 @@
 <!--                    th:src="@{../static/images/touxiang.jpg}"-->
                     <div class="text">
                         <img src="../../static/images/touxiang.jpg"   th:src="@{${session.user.avatar}}" alt="" class="ui avatar image">
-                        黎少康
+                        <span th:text="${session.user.nickname}">黎少康</span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
