@@ -67,7 +67,7 @@
                     <div class="ui orange label basic " th:text="${blog.flag}">原创</div>
                 </div>
                 <h2 class="ui center aligned header" th:text="${blog.title}">刻意练习的清单</h2>
-            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:text="${blog.content}">
+            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
                 <h1 id="insist">坚持练习</h1>
                 <h2 id="1">1</h2>
                 <pre><code class="language-css">p {color : red}</code></pre>
@@ -313,7 +313,7 @@
 <script th:src="@{/static/lib/prism/prism.js}" src="../static/lib/prism/prism.js"></script>
 <script th:src="@{/static/lib/qrcode/qrcode.js}" src="../static/lib/qrcode/qrcode.js"></script>
 
-<script>
+<script th:inline="javascript">
     $("#toggleClassButton").click(function(){
         $('.m-item').toggleClass('m-mobile-hide');
     })
@@ -346,9 +346,14 @@
         position : 'left center'
     })
 
+
+    var url=/*[[@{/blog/{id}(id=${blog.id})}]]*/ "";
+    var serurl="127.0.0.1:8090";
+    console.info(serurl+url);
     //二维码生成
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: "http://www.baidu.com",
+        text: "127.0.0.1:8090/blog/28",
+        // test: serurl+url,
         width: 128,
         height: 128,
         colorDark : "#000000",

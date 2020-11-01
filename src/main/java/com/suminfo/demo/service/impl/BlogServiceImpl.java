@@ -5,6 +5,7 @@ import com.suminfo.demo.dao.BlogRepository;
 import com.suminfo.demo.po.Blog;
 import com.suminfo.demo.po.Type;
 import com.suminfo.demo.service.BlogService;
+import com.suminfo.demo.utils.MarkdownUtils;
 import com.suminfo.demo.utils.MyBeanUtils;
 import com.suminfo.demo.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -110,5 +111,19 @@ public class BlogServiceImpl implements BlogService {
         Pageable pageable= PageRequest.of(0,size,sort);
 
         return blogRepository.findTop(pageable);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog one = blogRepository.getOne(id);
+        if(one==null){
+            throw  new NoFoundException("博客未找到");
+        }
+        Blog b =new Blog();
+        BeanUtils.copyProperties(one,b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtml(content));
+
+        return b;
     }
 }

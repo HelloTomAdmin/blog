@@ -27,5 +27,11 @@ public interface BlogService {
 
     List<Blog> listRecommendBlogTop(Integer size);
 
+    /**
+     * 根据id 将markDown 语法转化为html
+     * @param id
+     * @return
+     */
+    public Blog getAndConvert(Long id);
 
 }

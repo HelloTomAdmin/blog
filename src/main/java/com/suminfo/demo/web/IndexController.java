@@ -42,9 +42,15 @@ public class IndexController {
         return "index";
     }
 
+    /**
+     * 根据id 找到博客对象
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model){
-        model.addAttribute("blog",blogService.getBlog(id));
+        model.addAttribute("blog",blogService.getAndConvert(id));
 
 
         return "blog";
