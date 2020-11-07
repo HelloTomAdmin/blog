@@ -2,6 +2,7 @@ package com.suminfo.demo.web;
 
 import com.suminfo.demo.po.Blog;
 import com.suminfo.demo.service.BlogService;
+import com.suminfo.demo.service.CommentService;
 import com.suminfo.demo.service.TagService;
 import com.suminfo.demo.service.TypeService;
 import com.suminfo.demo.vo.BlogQuery;
@@ -29,6 +30,9 @@ public class IndexController {
     private TagService tagService;
 
 
+    @Resource
+    private CommentService commentService;
+
 
     @GetMapping("/")
     public String index(@PageableDefault(size=3,sort={"updateTime"},
@@ -51,7 +55,7 @@ public class IndexController {
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model){
         model.addAttribute("blog",blogService.getAndConvert(id));
-
+        model.addAttribute("comments",commentService.listCommentByBlogId(id));
 
         return "blog";
 
