@@ -20,6 +20,7 @@ public class Comment {
     @ManyToOne
     private Blog blog;
 
+    private boolean adminComment;
 
     @OneToMany(mappedBy="parentComment")
     private List<Comment> replyComments =new ArrayList<>();
@@ -29,13 +30,43 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long id, String nickname, String email, String content, String avatar, Date createTime) {
+
+
+    public Comment(Long id, String nickname, String email, String content, String avatar, Date createTime, Blog blog, boolean adminComment, List<Comment> replyComments, Comment parentComment) {
         this.id = id;
         this.nickname = nickname;
         this.email = email;
         this.content = content;
         this.avatar = avatar;
         this.createTime = createTime;
+        this.blog = blog;
+        this.adminComment = adminComment;
+        this.replyComments = replyComments;
+        this.parentComment = parentComment;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", content='" + content + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", createTime=" + createTime +
+                ", blog=" + blog +
+                ", adminComment=" + adminComment +
+                ", replyComments=" + replyComments +
+                ", parentComment=" + parentComment +
+                '}';
+    }
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
     }
 
     public Long getId() {

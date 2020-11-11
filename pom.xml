@@ -86,6 +86,20 @@
 			<artifactId>commonmark-ext-heading-anchor</artifactId>
 			<version>0.10.0</version>
 		</dependency>
+
+
+<!--		fastDFS传输jar包-->
+		<dependency>
+			<groupId>com.github.tobato</groupId>
+			<artifactId>fastdfs-client</artifactId>
+			<version>1.26.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

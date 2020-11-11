@@ -1,6 +1,7 @@
 package com.suminfo.demo.web;
 
 import com.suminfo.demo.po.Blog;
+import com.suminfo.demo.po.Comment;
 import com.suminfo.demo.service.BlogService;
 import com.suminfo.demo.service.CommentService;
 import com.suminfo.demo.service.TagService;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -55,8 +57,6 @@ public class IndexController {
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model){
         model.addAttribute("blog",blogService.getAndConvert(id));
-        model.addAttribute("comments",commentService.listCommentByBlogId(id));
-
         return "blog";
 
     }
