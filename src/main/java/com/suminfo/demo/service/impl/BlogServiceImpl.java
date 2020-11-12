@@ -20,9 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -136,4 +134,22 @@ public class BlogServiceImpl implements BlogService {
         blogRepository.updateViews(id);
         return b;
     }
+
+    @Override
+    public Map<String, List<Blog>> archiveBlog() {
+        List<String> groupYear = blogRepository.findGroupYear();
+
+        Map<String,List<Blog>>map=new HashMap<>();
+        for (String year : groupYear) {
+            map.put(year,blogRepository.findByYear(year));
+        }
+        return map;
+    }
+
+    @Override
+    public Long countBlog() {
+        return blogRepository.count();
+    }
+
+
 }
