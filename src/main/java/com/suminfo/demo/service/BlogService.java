@@ -17,6 +17,13 @@ public interface BlogService {
 
     Page<Blog>listBlog(Pageable pageable);
 
+    /**
+     * 根据tag 标签id 查询博客
+     * @param tagId
+     * @param pageable
+     * @return
+     */
+    Page<Blog>listBlog(Long tagId,Pageable pageable);
     Blog saveBlog (Blog blog);
 
     Blog updateBlog(Long id,Blog blog);
