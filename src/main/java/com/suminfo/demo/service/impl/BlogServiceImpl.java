@@ -139,7 +139,7 @@ public class BlogServiceImpl implements BlogService {
     public Map<String, List<Blog>> archiveBlog() {
         List<String> groupYear = blogRepository.findGroupYear();
 
-        Map<String,List<Blog>>map=new HashMap<>();
+        Map<String,List<Blog>>map=new LinkedHashMap<>();
         for (String year : groupYear) {
             map.put(year,blogRepository.findByYear(year));
         }

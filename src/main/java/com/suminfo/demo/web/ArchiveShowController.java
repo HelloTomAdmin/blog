@@ -14,10 +14,10 @@ public class ArchiveShowController {
     @Resource
     private BlogService blogService;
 
-    @GetMapping("/archives")
+    @GetMapping("/archievs")
     public String archives(Model model){
         model.addAttribute("archiveMap",blogService.archiveBlog());
         model.addAttribute("blogCount",blogService.countBlog());
-        return "archives";
+        return "archievs";
     }
 }

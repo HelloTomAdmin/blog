@@ -67,18 +67,11 @@ public class IndexController {
 
     }
 
-    @GetMapping("/about")
-    public String about(){
-        return "about";
-    }
     @GetMapping("/types")
     public String types(){
         return "types";
     }
-    @GetMapping("/archievs")
-    public String archievs(){
-        return "archievs";
-    }
+
     @GetMapping("/blogIndex")
     public String blogs(){
         return "blog";
