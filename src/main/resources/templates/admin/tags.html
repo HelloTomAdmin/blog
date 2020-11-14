@@ -88,8 +88,8 @@
             <tr>
                 <th colspan="6" >
                     <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                        <a href="#" th:href="@{/admin/types(page=${page.number}-1)}" th:unless="${page.first}" class="item" >上一页</a>
-                        <a href="#" th:href="@{/admin/types(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
+                        <a href="#" th:href="@{/admin/tags(page=${page.number}-1)}" th:unless="${page.first}" class="item" >上一页</a>
+                        <a href="#" th:href="@{/admin/tags(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
                     </div>
                     <a href="" th:href="@{/admin/tags/input}" class="ui mini right floated teal basic button ">新增</a>
                 </th>
@@ -106,7 +106,7 @@
 <!-- 底部footer-->
 
 
-<footer class="ui inverted segment vertical m-padded-tb-massive">
+<footer th:replace="admin/_fragments :: footer" class="ui inverted segment vertical m-padded-tb-massive">
     <div class="ui center aligned container">
         <div class="ui inverted divided grid stackable">
             <div class="three wide column ">

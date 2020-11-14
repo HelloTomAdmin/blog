@@ -52,20 +52,24 @@
                 </div>
             </div>
             <div class="three wide column">
-
                 <h4 class="io inverted header">最新微博</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item m-text-thin">用户故事(User Story)</a>
-                    <a href="#" class="item m-text-thin">用户故事(User Story)</a>
-                    <a href="#" class="item m-text-thin">用户故事(User Story)</a>
-                </div>
+              <div id="newblog-container">
+                  <div class="ui inverted link list" th:fragment="newblogList">
+                      <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事(User Story)</a>
+                      <!--/*-->
+                      <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                      <a href="#" class="item m-text-thin">用户故事(User Story)</a>
+                      <!--*/-->
+                  </div>
+              </div>
+
             </div>
 
 
             <div class="three wide column">
                 <h4 class="io inverted header">联系我</h4>
                 <div class="ui inverted link list">
-                    <a href="#" class="item">Email：lisk94@163.com</a>
+                    <a href="#" class="item" th:text="#{index.email}">Email：lisk94@163.com</a>
                     <a href="#" class="item">QQ: 651900526</a>
                 </div>
             </div>
@@ -86,9 +90,10 @@
 </footer>
 <th:block th:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-    <script src="/static/lib/editormd/editormd.min.js" th:src="@{/static/lib/editormd/editormd.min.js}"></script>
 
+    <script>
+        $("#newblog-container").load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    </script>
 </th:block>
 
 <body>

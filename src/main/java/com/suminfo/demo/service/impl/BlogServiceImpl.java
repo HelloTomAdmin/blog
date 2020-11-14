@@ -98,7 +98,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog one = blogRepository.getOne(id);
-        if(one!=null){
+        if(one==null){
             throw new NoFoundException("找不到该微博");
         }
         BeanUtils.copyProperties(one,blog, MyBeanUtils.getNullPropertyNames(blog));

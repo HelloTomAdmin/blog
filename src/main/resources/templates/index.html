@@ -34,7 +34,7 @@
 
 </nav>
 <!-- 中间内容-->
-<div class="m-m-padded-tb-large m-container">
+<div class="m-m-padded-tb-large m-container-small">
     <div class="ui container">
         <div class="ui stackable grid" >
 <!--            左边的微博列表-->
@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="item">
 <!--                                                浏览次数-->
-                                                <i class=" eye icon"></i> <span th:text="${blog.views}">200</span>
+                                                <i class="eye icon"></i> <span th:text="${blog.views}">200</span>
                                             </div>
                                         </div>
                                 </div>
@@ -343,7 +343,7 @@
                                         </div>
                                         <div class="item">
                                             <!--                                                浏览次数-->
-                                            <i class=" eye icon"></i>200
+                                            <i class="eye icon"></i>200
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +418,7 @@
                         <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
                     </div>
                     <div class="column right aligned ">
-                        <a href="#" th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
+                        <a href="#" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
                     </div>
                 </div>
 
@@ -437,13 +437,13 @@
                                 <i class="idea icon"></i><span>分类</span>
                             </div>
                             <div class="column aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" th:href="@{/types/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
                         <div class="ui fluid vertical menu" >
-                            <a href="#" class="item" th:each="type :${types}">
+                            <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="item" th:each="type :${types}">
                                 <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
@@ -480,13 +480,13 @@
                                 <i class="idea icon"></i>标签
                             </div>
                             <div class="column aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" th:href="@{/tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
 
                     </div>
                     <div class="ui teal segment">
-                        <a href="#" th:each="tag :${tags}" target="_blank" class="m-margin-tb-tiny ui teal basic left pointing label m-padded-tb-tiny">
+                        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" th:each="tag :${tags}" target="_blank" class="m-margin-tb-tiny ui teal basic left pointing label m-padded-tb-tiny">
                             <span th:text="${tag.name}">方法论</span>
                             <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                         </a>
@@ -613,9 +613,8 @@
     </div>
 </footer>
 
-<!--/*/<th:block th:replace="script">/*/-->
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <!--/*/</th:block>/*/-->
 <script>
     $("#toggleClassButton").click(function(){

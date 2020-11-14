@@ -81,11 +81,18 @@ public class BlogController {
     }
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
+        Blog b=null;
+        if(blog.getId()!=null){
+            //更新
+             b = blogService.updateBlog(blog.getId(), blog);
 
-        blog.setUser((User) session.getAttribute("user"));
-        blog.setType(typeService.getType(blog.getType().getId()));
-        blog.setTags(tagService.listTag(blog.getTagIds()));
-        Blog b = blogService.saveBlog(blog);
+        }else {
+            blog.setUser((User) session.getAttribute("user"));
+            blog.setType(typeService.getType(blog.getType().getId()));
+            blog.setTags(tagService.listTag(blog.getTagIds()));
+             b = blogService.saveBlog(blog);
+
+        }
         if(b==null){
             attributes.addFlashAttribute("message","操作失败");
         }else {
